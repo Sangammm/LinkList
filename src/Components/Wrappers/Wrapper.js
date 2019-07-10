@@ -5,7 +5,7 @@ import { SIGNUP } from "../../Apollo/gql";
 import { LOGIN } from "../../Apollo/gql";
 import { Redirect } from "react-router-dom";
 import { checkerror } from "../../Errors";
-const Loader = () => {
+export const Loader = () => {
   const [string, set] = useState("Loading.");
 
   useEffect(() => {

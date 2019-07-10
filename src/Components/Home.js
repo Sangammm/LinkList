@@ -1,34 +1,38 @@
 import React, { useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { clientProvider } from "./Wrappers/Wrapper";
 import { ISLOGGEDIN } from "../Apollo/gql";
 import { Query } from "react-apollo";
+import { FEED } from "../Apollo/gql";
+import { Loader } from "./Wrappers/Wrapper";
+import Feed from "./Feed";
 const Home = props => {
-  console.log(props.client);
+  console.log(props.history);
   useEffect(() => {
     let data = props.client.readQuery({
       query: ISLOGGEDIN
     });
-    console.log(data.isLoggedIn);
+    if (!data.isLoggedIn) {
+      props.history.push("/");
+    }
   }, []);
 
   return (
     <React.Fragment>
-      <Query query={ISLOGGEDIN}>
-        {({ data }) => {
-          console.log(data.isLoggedIn);
-          return !data.isLoggedIn ? (
-            <Redirect to="/" />
+      <Query query={FEED}>
+        {({ loading, data, error }) =>
+          loading ? (
+            <Loader />
+          ) : error ? (
+            <h5>Some Error Occured</h5>
           ) : (
             <React.Fragment>
-              <h1>HOme</h1>
-              {data && <h2>{data.isLoggedIn}</h2>}
+              <Feed {...data} />
             </React.Fragment>
-          );
-        }}
+          )
+        }
       </Query>
     </React.Fragment>
   );
 };
-
-export default clientProvider(Home);
+export default clientProvider(withRouter(Home));

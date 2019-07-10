@@ -27,8 +27,23 @@ export const LOGIN = gql`
 `;
 
 export const FEED = gql`
-  query feed(){
-    
+  {
+    feed {
+      id
+      description
+      url
+      votes {
+        id
+        user {
+          id
+          name
+        }
+      }
+      postedBy {
+        id
+        name
+      }
+    }
   }
 `;
 
