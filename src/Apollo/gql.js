@@ -26,6 +26,18 @@ export const LOGIN = gql`
   }
 `;
 
+export const VOTE = gql`
+  mutation vote($linkId: ID!) {
+    vote(linkId: $linkId) {
+      id
+      user {
+        name
+        id
+      }
+    }
+  }
+`;
+
 export const FEED = gql`
   {
     feed {
@@ -50,5 +62,10 @@ export const FEED = gql`
 export const ISLOGGEDIN = gql`
   {
     isLoggedIn @client
+  }
+`;
+export const GETLOCALID = gql`
+  {
+    id @client
   }
 `;

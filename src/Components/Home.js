@@ -7,7 +7,7 @@ import { FEED } from "../Apollo/gql";
 import { Loader } from "./Wrappers/Wrapper";
 import Feed from "./Feed";
 const Home = props => {
-  console.log(props.history);
+  //console.log(props.history);
   useEffect(() => {
     let data = props.client.readQuery({
       query: ISLOGGEDIN

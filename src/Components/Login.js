@@ -10,7 +10,6 @@ const Login = props => {
             type="email"
             value={props.e}
             onChange={e => props.sete(e.target.value)}
-            autoComplete
             required
             placeholder="Email"
           />
@@ -18,7 +17,6 @@ const Login = props => {
             type="password"
             value={props.p}
             onChange={e => props.setp(e.target.value)}
-            autoComplete
             required
             placeholder="Password"
           />

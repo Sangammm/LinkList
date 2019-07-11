@@ -36,7 +36,9 @@ export const Signupwrapper = Wrappedcomponent => {
           <React.Fragment>
             <ApolloConsumer>
               {client => {
-                client.writeData({ data: { isLoggedIn: true } });
+                client.writeData({
+                  data: { isLoggedIn: true, id: data.signup.user.id }
+                });
               }}
             </ApolloConsumer>
             <Redirect to="/home" />
@@ -73,13 +75,15 @@ export const LoginWrapper = Wrappedcomponent => {
         if (data) {
           console.log("User=", data);
           localStorage.setItem("token", data.login.token);
-          localStorage.setItem("username", data.login.user.email);
+          //localStorage.setItem("username", data.login.user.email);
         }
         return data ? (
           <React.Fragment>
             <ApolloConsumer>
               {client => {
-                client.writeData({ data: { isLoggedIn: true } });
+                client.writeData({
+                  data: { isLoggedIn: true, id: data.login.user.id }
+                });
               }}
             </ApolloConsumer>
             <Redirect to="/home" />

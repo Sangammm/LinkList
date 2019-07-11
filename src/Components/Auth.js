@@ -5,8 +5,8 @@ import Login from "./Login";
 const Auth = props => {
   const [islogin, setislogin] = useState(true);
   const [n, setn] = useState("");
-  const [e, sete] = useState("");
-  const [p, setp] = useState("");
+  const [e, sete] = useState("s@s.com");
+  const [p, setp] = useState("qwe123");
   const [err, seterr] = useState();
   return islogin ? (
     <Login
