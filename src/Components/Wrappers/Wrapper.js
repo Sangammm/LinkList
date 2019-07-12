@@ -22,7 +22,7 @@ export const Loader = () => {
 
 export const Signupwrapper = Wrappedcomponent => {
   return propsNew => (
-    <Mutation mutation={SIGNUP}>
+    <Mutation mutation={SIGNUP} fetchPolicy="no-cache">
       {(signup, { data, loading, error }) => {
         if (error) {
           propsNew.seterr(checkerror(error.graphQLErrors[0].message));
@@ -67,7 +67,7 @@ export const Signupwrapper = Wrappedcomponent => {
 
 export const LoginWrapper = Wrappedcomponent => {
   return propsNew => (
-    <Mutation mutation={LOGIN}>
+    <Mutation mutation={LOGIN} fetchPolicy="no-cache">
       {(login, { error, data, loading }) => {
         if (error) {
           propsNew.seterr(checkerror(error.graphQLErrors[0].message));

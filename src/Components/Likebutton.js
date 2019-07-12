@@ -5,7 +5,7 @@ import { GETLOCALID, VOTE, FEED } from "../Apollo/gql";
 import { Loader } from "./Wrappers/Wrapper";
 const Likebutton = props => {
   const [userid, setuserid] = useState("");
-  console.log(props);
+  //console.log(props);
   useEffect(() => {
     let userid1 = props.client.readQuery({
       query: GETLOCALID
@@ -32,7 +32,6 @@ const Likebutton = props => {
           <Loader />
         ) : (
           <React.Fragment>
-            {console.log(check())}
             {!check() ? (
               <button
                 onClick={() => {
